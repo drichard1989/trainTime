@@ -61,4 +61,50 @@ $("#submitButton").on("click", function() {
 
 });
 
+
+
+
+// Creating a firebase event when adding a new employee to the database
+database.ref().on("child_added", function(childSnapshot, prevChildKey){
+
+	console.log(childSnapshot.val());
+
+
+	// Store all new values into a variable.
+	var trainName = childSnapshot.val().trainName;
+	var destination = childSnapshot.val().destination;
+	var time = childSnapshot.val().time;
+	var frequency = childSnapshot.val().frequency;
+	var minutesAway = 2;
+
+	// Consoling Train information
+	console.log(trainName);
+	console.log(destination);
+	console.log(time);
+	console.log(frequency);
+
+	// **THIS IS WHERE I AM GOING TO ADD THE CALCULATION FOR THE ARRIVAL TIME
+
+
+	// Adding each train's data into the table (copy pasta)
+	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + time + "</td><td>" + frequency + "</td><td>" + minutesAway + "</td></tr>");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
