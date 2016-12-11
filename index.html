@@ -3,43 +3,46 @@
 <head>
 	<title>Train Time!</title>
 
-	<!-- This is the link to the Bootstrap CDN -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	<!-- This is the link to the css file for styling  -->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
 	<!-- This is the link for Jquery -->
 	<script
   	src="https://code.jquery.com/jquery-3.1.1.js"
  	 integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
  	crossorigin="anonymous"></script>
 
-	<!-- Linking this to the JS file... -->
- 	<script src="assets/javascript/app.js"></script>
+	<!-- Bootstrap JS CDN -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	
+	<!-- This is the link to the Bootstrap CSS CDN -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
- 	<!-- This is the link to make my site mobile responsive.  -->
- 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- This is the link to the css file for styling  -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
- 	<!-- This is to link moment.js -->
+	<!-- Linking to firebase -->
+ 	<script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
 
+	<!-- This is to link moment.js -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+	<!-- This is the link to make my site mobile responsive.  -->
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-<div class="container">
-	<!-- Spacing Column -->
 
+<!-- Container to give spacing on sides and formatting -->
+<div class="container">
+
+		<!-- Title jumbotron -->
 		<div class="jumbotron">
 	  		<h1>Anytime is Train Time</h1>
 	  		<p>Choo Choo. Chee Chee.</p>
 		</div>
-
+		
+		<!-- Table for returned Data -->
 		<div class="panel panel-primary">
 			<!-- Default panel contents -->
 			<div class="panel-heading">Current Train Schedule</div>
-
-			<!-- Table -->
 			<table class="table" id="trainTable">
 				<thead>
 					<tr>
@@ -51,7 +54,7 @@
 			  		</tr>
 			  	</thead>
 			  	<tbody>
-			  		
+					<!-- Firebase data will be inserted here -->
 			  	</tbody>
 			  </table>
 		</div>
@@ -78,16 +81,10 @@
 				    <label for="frequencyInput">Frequency (min)</label>
 				    <input type="text" class="form-control" id="frequencyInput" placeholder="Enter Frequency">
 				  </div>
-				  
 				  <button type="submit" class="btn btn-primary" id="submitButton"><span class="glyphicon glyphicon-floppy-saved"></span></button>
 				</form>
 		</div>
 </div>
-
-<!-- Spacing Column -->
-<div class="col-sm-1"></div>
-
-
 
   <!-- Modal -->
     <div class="modal fade" id="addTrainModal" role="dialog">
@@ -109,13 +106,8 @@
       </div>
     </div>
 
-
-<script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
-
-
-
-
-
+	<!-- Linking this to the JS file... -->
+ 	<script src="assets/javascript/app.js"></script>
 
 </body>
 </html>
