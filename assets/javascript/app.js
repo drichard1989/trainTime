@@ -29,6 +29,9 @@ var nextTrainTime;
 // Adding an event listener for the submit button to submit trains
 $("#submitButton").on("click", function() {
 
+
+	// This keeps the page from refreshing when the submit button is clicked
+  	event.preventDefault();
 // Here I am grabbing the data submitted from the text fields
 
 	trainName = $("#trainNameInput").val().trim();
