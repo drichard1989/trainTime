@@ -92,11 +92,9 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	console.log(time);
 	console.log(frequency);
 
-	// **THIS IS WHERE I AM GOING TO ADD THE CALCULATION FOR THE ARRIVAL TIME
-
 
 	// This takes the time and formats it to the readable HH:mm format
-	var timeFormat = moment(time, "HH:mm").subtract(1, "years");
+	var timeFormat = moment(time, "HH:mm MM DD YYYY").subtract(1, "years");
 
 	// This does the math to convert the time to minutes.
 	var diffTime = moment().diff(moment(timeFormat), "minutes");
@@ -114,7 +112,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 
 
 	// Adding each train's data into the table (copy pasta)
-	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + time + "</td><td>" + frequency + "</td><td>" + minutesAway + "</td></tr>");
+	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + nextTrainTime + "</td><td>" + frequency + "</td><td>" + minutesAway + "</td></tr>");
 });
 
 
