@@ -40,7 +40,6 @@ $("#submitButton").on("click", function() {
 	frequency = $("#frequencyInput").val().trim();
 
 	// Create local "temporary" object for holding train information. Need to ask more about this, as I do not fully understand it.
-
 	var newTrain = {
 		trainName: trainName,
 		destination: destination,
