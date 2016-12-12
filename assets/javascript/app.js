@@ -35,9 +35,25 @@ $("#submitButton").on("click", function() {
 // Here I am grabbing the data submitted from the text fields
 
 	trainName = $("#trainNameInput").val().trim();
+		if(trainName == "") {
+			alert("Train Name must be filled out.");
+			return false;
+		};
 	destination = $("#destinationInput").val().trim();
+		if(destination == "") {
+			alert ("Train Destination must be filled out.");
+			return false;
+		};
 	time = $("#timeInput").val().trim();
+		if (time == "") {
+			alert("Train Time must be filled out");
+			return false;
+		};
 	frequency = $("#frequencyInput").val().trim();
+		if (frequency == "") {
+			alert("Train Frequency must be filled out");
+			return false;
+		};
 
 	// Create local "temporary" object for holding train information. Need to ask more about this, as I do not fully understand it.
 	var newTrain = {
@@ -51,15 +67,14 @@ $("#submitButton").on("click", function() {
 	database.ref().push(newTrain);
 
 	// Alerts that a train has been added
-  	$("#addTrainModal").modal();
+  	// $("#addTrainModal").modal();
+  	alert("Train has successfully been added!");
 
 	// Logs the information to the console
 	console.log(newTrain.trainName);
 	console.log(newTrain.destination);
 	console.log(newTrain.time);
 	console.log(newTrain.frequency);
-
-	 
 
 	// Clear all of the text boxes
 	$("#trainNameInput").val("");
@@ -72,14 +87,10 @@ $("#submitButton").on("click", function() {
 
 }); /*Closes the adding train event listener.*/
 
-
-
-
 // Creating a firebase event when adding a new employee to the database
 database.ref().on("child_added", function(childSnapshot, prevChildKey){
 
 	console.log(childSnapshot.val());
-
 
 	// Store all new values into a variable.
 	var trainName = childSnapshot.val().trainName;
@@ -87,13 +98,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 	var time = childSnapshot.val().time;
 	var frequency = childSnapshot.val().frequency;
 
-
 	// Consoling Train information
 	console.log(trainName);
 	console.log(destination);
 	console.log(time);
 	console.log(frequency);
-
 
 	// This takes the time and formats it to the readable HH:mm format
 	var timeFormat = moment(time, "HH:mm MM DD YYYY").subtract(1, "years");
@@ -111,7 +120,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey){
 
 	// Formats the next trains time for the table
 	nextTrainTime = moment(nextTrain).format("hh:mm A");
-
 
 	// Adding each train's data into the table (copy pasta)
 	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + nextTrainTime + "</td><td>" + frequency + "</td><td>" + minutesAway + "</td></tr>");
